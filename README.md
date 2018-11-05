@@ -1,21 +1,18 @@
 # CakePHP AdminLTE Theme
 
+forked from maiconpinto/cakephp-adminlte-theme
+
 ## Installation
 
 You can install using [composer](http://getcomposer.org).
 
 ```
-composer require maiconpinto/cakephp-adminlte-theme
+composer require alisson-nascimento/cakephp-theme-adminlte
 ```
 
 ### Enable Plugin
 
-```php
-// config/bootstrap.php
-
-Plugin::load('AdminLTE', ['bootstrap' => true, 'routes' => true]);
-
-```
+    $ bin/cake plugin load AdminLTE
 
 ### Enable theme
 
@@ -25,9 +22,6 @@ Plugin::load('AdminLTE', ['bootstrap' => true, 'routes' => true]);
 public function beforeRender(Event $event)
 {
     $this->viewBuilder()->setTheme('AdminLTE');
-
-    // For CakePHP before 3.5
-    $this->viewBuilder()->theme('AdminLTE');
 }
 ```
 
@@ -72,11 +66,3 @@ If you want to [Customize Layout](https://github.com/maiconpinto/cakephp-adminlt
 Added link to default page of CakePHP.
 
 ![Page debug](docs/page-debug.png)
-
-## Contributing
-
-1. Fork it
-2. Create your feature branch (`git checkout -b my-new-feature`)
-3. Commit your changes (`git commit -am 'Add some feature'`)
-4. Push to the branch (`git push origin my-new-feature`)
-5. Create new Pull Request
