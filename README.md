@@ -39,7 +39,7 @@ public function initialize()
 ### Configure
 
 ```php
-// To customize configuration paste it at end of file config/bootstrap.php
+// To customize configuration paste it at end of method initialize in src/Controller/AppController.php
 
 Configure::write('Theme', [
     'title' => 'AdminLTE',
