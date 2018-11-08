@@ -1,20 +1,22 @@
 # CakePHP AdminLTE Theme
 
-forked from maiconpinto/cakephp-adminlte-theme
+Este projeto é um fork de maiconpinto/cakephp-adminlte-theme
 
-## Installation
+## Instalação
 
-You can install using [composer](http://getcomposer.org).
+Você pode instalar usando o [composer](http://getcomposer.org).
 
 ```
 composer require alisson-nascimento/cakephp-theme-adminlte
 ```
 
-### Enable Plugin
+### Habilitar Plugin
 
-    $ bin/cake plugin load AdminLTE
+```
+$ bin/cake plugin load AdminLTE
+```
 
-### Enable theme
+### Hbilitar Theme
 
 ```php
 // src/Controller/AppController.php
@@ -25,7 +27,7 @@ public function beforeRender(Event $event)
 }
 ```
 
-### Enable Form
+### Habilitar Form
 
 ```php
 // src/View/AppView.php
@@ -36,7 +38,7 @@ public function initialize()
 }
 ```
 
-### Configure
+### Configuração
 
 ```php
 // To customize configuration paste it at end of method initialize in src/Controller/AppController.php
@@ -57,11 +59,11 @@ Configure::write('Theme', [
 ]);
 ```
 
-### Customize Layout
+### Customizar Layout
 
-If you want to [Customize Layout](https://github.com/maiconpinto/cakephp-adminlte-theme/wiki/Customize-Layout)
+[Customize Layout](https://github.com/maiconpinto/cakephp-adminlte-theme/wiki/Customize-Layout)
 
-### Page debug
+### Página de debug
 
 Added link to default page of CakePHP.
 
