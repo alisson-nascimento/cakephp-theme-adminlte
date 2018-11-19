@@ -40,11 +40,11 @@ $pk = "\$$singularVar->{$primaryKey[0]}";
 %>
 <section class="content-header">
   <h1>
-    <?php echo __('<%= $singularHumanName %>'); ?>
+    <?php echo __('<%= $singularHumanName %>') . ' #' . $<%= $singularVar %>->id; ?> 
   </h1>
   <ol class="breadcrumb">
     <li>
-    <?= $this->Html->link('<i class="fa fa-dashboard"></i> ' . __('Back'), ['action' => 'index'], ['escape' => false])?>
+    <?= $this->Html->link('<i class="fa fa-dashboard"></i> ' . __('Listagem'), ['action' => 'index'], ['escape' => false])?>
     </li>
   </ol>
 </section>
@@ -56,7 +56,7 @@ $pk = "\$$singularVar->{$primaryKey[0]}";
         <div class="box box-solid">
             <div class="box-header with-border">
                 <i class="fa fa-info"></i>
-                <h3 class="box-title"><?php echo __('Information'); ?></h3>
+                <h3 class="box-title"><?php echo __('Dados'); ?></h3>
             </div>
             <!-- /.box-header -->
             <div class="box-body">
@@ -150,14 +150,14 @@ foreach ($relations as $alias => $details):
             <div class="box">
                 <div class="box-header">
                     <i class="fa fa-share-alt"></i>
-                    <h3 class="box-title"><?= __('Related {0}', ['<%= $otherPluralHumanName %>']) ?></h3>
+                    <h3 class="box-title"><?= __('Registros de {0} Relacionados', ['<%= $otherPluralHumanName %>']) ?></h3>
                 </div>
                 <!-- /.box-header -->
                 <div class="box-body table-responsive no-padding">
 
                 <?php if (!empty($<%= $singularVar %>-><%= $details['property'] %>)): ?>
 
-                    <table class="table table-hover">
+                    <table class="table table-bordered"class="table table-hover">
                         <tbody>
                             <tr>
                                 <% foreach ($details['fields'] as $field): %>
@@ -170,7 +170,7 @@ foreach ($relations as $alias => $details):
                                 <% endforeach; %>
                                     
                                 <th>
-                                    <?php echo __('Actions'); ?>
+                                    &nbsp;
                                 </th>
                             </tr>
 
@@ -186,9 +186,9 @@ foreach ($relations as $alias => $details):
 
                                     <% $otherPk = "\${$otherSingularVar}->{$details['primaryKey'][0]}"; %>
                                     <td class="actions">
-                                    <?= $this->Html->link(__('View'), ['controller' => '<%= $details['controller'] %>', 'action' => 'view', <%= $otherPk %>], ['class'=>'btn btn-info btn-xs']) %>
-                                    <?= $this->Html->link(__('Edit'), ['controller' => '<%= $details['controller'] %>', 'action' => 'edit', <%= $otherPk %>], ['class'=>'btn btn-warning btn-xs']) %>
-                                    <?= $this->Form->postLink(__('Delete'), ['controller' => '<%= $details['controller'] %>', 'action' => 'delete', <%= $otherPk %>], ['confirm' => __('Are you sure you want to delete # {0}?', <%= $otherPk %>), 'class'=>'btn btn-danger btn-xs']) %>    
+                                    <?= $this->Html->link(__('Ver'), ['controller' => '<%= $details['controller'] %>', 'action' => 'view', <%= $otherPk %>], ['class'=>'btn btn-info btn-xs']) %>
+                                    <?= $this->Html->link(__('Editar'), ['controller' => '<%= $details['controller'] %>', 'action' => 'edit', <%= $otherPk %>], ['class'=>'btn btn-warning btn-xs']) %>
+                                    <?= $this->Form->postLink(__('Deletar'), ['controller' => '<%= $details['controller'] %>', 'action' => 'delete', <%= $otherPk %>], ['confirm' => __('Are you sure you want to delete # {0}?', <%= $otherPk %>), 'class'=>'btn btn-danger btn-xs']) %>    
                                     </td>
                                 </tr>
                             <?php endforeach; ?>
