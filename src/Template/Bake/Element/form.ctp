@@ -5,14 +5,14 @@ use Cake\Utility\Inflector;
 %>
 <section class="content-header">
   <h1>
-    <%= $singularHumanName %>
+    <ol class="breadcrumb">
+        <li><i class="fa fa-dashboard"></i></li>
+        <li><%= $pluralHumanName %></li>
+    </ol>
     <small><?= __('<%= $action=="add"?"Adicionar":"Editar"; %>') ?></small>
+    <div class="pull-right"><?= $this->Html->link(__('Listagem'), ['action' => 'index'], ['class'=>'btn btn-success btn-sm btn-flat']) ?></div>
   </h1>
-  <ol class="breadcrumb">
-    <li>
-    <?= $this->Html->link('<i class="fa fa-dashboard"></i> '.__('Listagem'), ['action' => 'index'], ['escape' => false]) ?>
-    </li>
-  </ol>
+  
 </section>
 
 <!-- Main content -->
@@ -22,9 +22,6 @@ use Cake\Utility\Inflector;
     <div class="col-md-12">
       <!-- general form elements -->
       <div class="box box-primary">
-        <div class="box-header with-border">
-          <h3 class="box-title"><?= __('Dados') ?></h3>
-        </div>
         <!-- /.box-header -->
         <!-- form start -->
         <?= $this->Form->create($<%= $singularVar %>, array('role' => 'form')) ?>
@@ -33,9 +30,6 @@ use Cake\Utility\Inflector;
 <%
     foreach ($fields as $field) {
       if (in_array($field, $primaryKey)) {
-        continue;
-      }
-      if (in_array($field, ['deleted'])) {
         continue;
       }
       if (isset($keyFields[$field])) {
@@ -68,7 +62,7 @@ use Cake\Utility\Inflector;
     if (!empty($associations['BelongsToMany'])) {
       foreach ($associations['BelongsToMany'] as $assocName => $assocData) {
 %>
-            echo $this->Form->input('<%= $assocData['property'] %>._ids', ['multiple'=>'multiple', 'class'=>'select2 form-control',  'options' => $<%= $assocData['variable'] %>]);
+            echo $this->Form->input('<%= $assocData['property'] %>._ids', ['options' => $<%= $assocData['variable'] %>]);
 <%
       }
     }
@@ -77,7 +71,7 @@ use Cake\Utility\Inflector;
           </div>
           <!-- /.box-body -->
           <div class="box-footer">
-            <?= $this->Form->button(__('Salvar')) ?>
+              <div class="pull-right"><?= $this->Form->button(__('Salvar')) ?></div>
           </div>
         <?= $this->Form->end() ?>
       </div>
