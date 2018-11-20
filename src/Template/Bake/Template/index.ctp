@@ -10,8 +10,12 @@ $fields = collection($fields)
 <!-- Content Header (Page header) -->
 <section class="content-header">
   <h1>
-    <%= $pluralHumanName %>
-    <div class="pull-right"><?= $this->Html->link(__('Novo'), ['action' => 'add'], ['class'=>'btn btn-success btn-sm']) ?></div>
+    <ol class="breadcrumb">
+        <li><i class="fa fa-dashboard"></i></li>
+        <li><%= $pluralHumanName %></li>
+    </ol>
+    <small>Listagem</small>
+    <div class="pull-right"><?= $this->Html->link(__('Adicionar'), ['action' => 'add'], ['class'=>'btn btn-success btn-sm btn-flat']) ?></div>
   </h1>
 </section>
 
@@ -20,7 +24,7 @@ $fields = collection($fields)
   <div class="row">
     <div class="col-xs-12">
       <div class="box">
-        <div class="box-header">
+<!--        <div class="box-header">
           <h3 class="box-title"><?= __('Listagem de') ?> <%= $pluralHumanName %></h3>
           <div class="box-tools">
             <form action="<?php echo $this->Url->build(); ?>" method="POST">
@@ -32,7 +36,7 @@ $fields = collection($fields)
               </div>
             </form>
           </div>
-        </div>
+        </div>-->
         <!-- /.box-header -->
         <div class="box-body table-responsive no-padding">
           <table class="table table-bordered"class="table table-hover">
@@ -80,9 +84,9 @@ if (!in_array($field, ['modified', 'updated', 'deleted'])) :%>
   $pk = '$' . $singularVar . '->' . $primaryKey[0];
 %>
                 <td class="actions" style="white-space:nowrap">
-                  <?= $this->Html->link(__('Ver'), ['action' => 'view', <%= $pk %>], ['class'=>'btn btn-info btn-xs']) ?>
-                  <?= $this->Html->link(__('Editar'), ['action' => 'edit', <%= $pk %>], ['class'=>'btn btn-warning btn-xs']) ?>
-                  <?= $this->Form->postLink(__('Deletar'), ['action' => 'delete', <%= $pk %>], ['confirm' => __('Confirm to delete this entry?'), 'class'=>'btn btn-danger btn-xs']) ?>
+                  <!--<?= $this->Html->link(__('Ver'), ['action' => 'view', <%= $pk %>], ['class'=>'btn btn-info btn-xs btn-flat']) ?>-->
+                  <?= $this->Html->link(__('Editar'), ['action' => 'edit', <%= $pk %>], ['class'=>'btn btn-warning btn-xs btn-flat']) ?>
+                  <?= $this->Form->postLink(__('Deletar'), ['action' => 'delete', <%= $pk %>], ['confirm' => __('Confirm to delete this entry?'), 'class'=>'btn btn-danger btn-xs btn-flat']) ?>
                 </td>
               </tr>
             <?php endforeach; ?>

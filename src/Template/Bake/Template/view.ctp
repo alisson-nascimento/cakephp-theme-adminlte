@@ -39,14 +39,13 @@ $groupedFields += ['number' => [], 'string' => [], 'boolean' => [], 'date' => []
 $pk = "\$$singularVar->{$primaryKey[0]}";
 %>
 <section class="content-header">
-  <h1>
-    <?php echo __('<%= $singularHumanName %>') . ' #' . $<%= $singularVar %>->id; ?> 
-  </h1>
-  <ol class="breadcrumb">
-    <li>
-    <?= $this->Html->link('<i class="fa fa-dashboard"></i> ' . __('Listagem'), ['action' => 'index'], ['escape' => false])?>
-    </li>
-  </ol>
+    <h1>
+        <ol class="breadcrumb">
+            <li><i class="fa fa-dashboard"></i></li>
+            <li><?php echo __('<%= $singularHumanName %>') . ' #' . $<%= $singularVar %>->id; ?></li>
+        </ol>        
+        <div class="pull-right"><?= $this->Html->link(__('Listagem'), ['action' => 'index'], ['class' => 'btn btn-success btn-sm btn-flat']) ?></div>
+    </h1>
 </section>
 
 <!-- Main content -->
