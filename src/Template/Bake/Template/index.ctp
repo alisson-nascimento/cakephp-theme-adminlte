@@ -3,7 +3,7 @@ use Cake\Utility\Inflector;
 
 $fields = collection($fields)
   ->filter(function($field) use ($schema) {
-    return !in_array($schema->getColumnType($field), ['binary', 'text']);
+    return !in_array($schema->columnType($field), ['binary', 'text']);
   })
   ->take(7);
 %>
@@ -15,7 +15,7 @@ $fields = collection($fields)
         <li><%= $pluralHumanName %></li>
     </ol>
     <small>Listagem</small>
-    <div class="pull-right"><?= $this->Html->link(__('Adicionar'), ['action' => 'add'], ['class'=>'btn btn-success btn-sm btn-flat']) ?></div>
+    <div class="pull-right"><?= $this->Html->link(__('Adicionar'), ['action' => 'add'], ['class'=>'btn btn-default btn-sm btn-flat']) ?></div>
   </h1>
 </section>
 
@@ -69,7 +69,7 @@ if (!in_array($field, ['modified', 'updated', 'deleted'])) :%>
     }
 
     if ($isKey !== true) {
-      if (!in_array($schema->getColumnType($field), ['integer', 'biginteger', 'decimal', 'float'])) {
+      if (!in_array($schema->columnType($field), ['integer', 'biginteger', 'decimal', 'float'])) {
 %>
                 <td><?= h($<%= $singularVar %>-><%= $field %>) ?></td>
 <%
@@ -84,8 +84,8 @@ if (!in_array($field, ['modified', 'updated', 'deleted'])) :%>
   $pk = '$' . $singularVar . '->' . $primaryKey[0];
 %>
                 <td class="actions" style="white-space:nowrap">
-                  <!--<?= $this->Html->link(__('Ver'), ['action' => 'view', <%= $pk %>], ['class'=>'btn btn-info btn-xs btn-flat']) ?>-->
-                  <?= $this->Html->link(__('Editar'), ['action' => 'edit', <%= $pk %>], ['class'=>'btn btn-warning btn-xs btn-flat']) ?>
+                  <!--<?= $this->Html->link(__('Ver'), ['action' => 'view', <%= $pk %>], ['class'=>'btn btn-default btn-xs btn-flat']) ?>-->
+                  <?= $this->Html->link(__('Editar'), ['action' => 'edit', <%= $pk %>], ['class'=>'btn btn-default btn-xs btn-flat']) ?>
                   <?= $this->Form->postLink(__('Deletar'), ['action' => 'delete', <%= $pk %>], ['confirm' => __('Confirm to delete this entry?'), 'class'=>'btn btn-danger btn-xs btn-flat']) ?>
                 </td>
               </tr>

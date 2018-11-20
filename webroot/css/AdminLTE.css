@@ -95,7 +95,7 @@ body {
 .content-wrapper,
 .right-side {
   min-height: 100%;
-  background-color: #ecf0f5;
+  background-color: #f0f0f0;
   z-index: 800;
 }
 .main-footer {
@@ -310,7 +310,9 @@ a:focus {
 }
 .content-header {
   position: relative;
-  padding: 15px 15px 0 15px;
+  padding: 15px 15px 15px 15px;
+  border-bottom: 1px solid #d2d6de;
+  background: #fff;
 }
 .content-header > h1 {
   margin: 0;
@@ -347,6 +349,29 @@ a:focus {
 .content-header > .breadcrumb > li + li:before {
   content: '>\00a0';
 }
+
+.content-header > h1 > .breadcrumb {    
+  background: transparent;
+  margin-top: 0;
+  margin-bottom: 0;
+  padding: 8px 0px;
+  border-radius: 0px;
+  display: initial;
+}
+.content-header > h1 > .breadcrumb > li > a {
+  text-decoration: none;
+  display: inline-block;
+}
+.content-header > h1 > .breadcrumb > li > a > .fa,
+.content-header > h1 > .breadcrumb > li > a > .glyphicon,
+.content-header > h1 > .breadcrumb > li > a > .ion {
+  margin-right: 5px;
+}
+.content-header > h1 > .breadcrumb > li + li:before {
+  content: '/\00a0';
+  color:#888;
+}
+
 @media (max-width: 991px) {
   .content-header > .breadcrumb {
     position: relative;
@@ -358,6 +383,20 @@ a:focus {
     padding-left: 10px;
   }
   .content-header > .breadcrumb li:before {
+    color: #97a0b3;
+  }
+  
+  .content-header > h1 > .breadcrumb {
+    position: relative;
+    margin-top: 5px;
+    top: 0;
+    right: 0;
+    float: none;
+    background: transparent;
+    padding-left: 5px;
+    display: block;
+  }
+  .content-header > h1 > .breadcrumb li:before {
     color: #97a0b3;
   }
 }
@@ -2244,7 +2283,7 @@ a:focus {
 .btn-default {
   background-color: #f4f4f4;
   color: #444;
-  border-color: #ddd;
+  border-color: #bbb;
 }
 .btn-default:hover,
 .btn-default:active,
