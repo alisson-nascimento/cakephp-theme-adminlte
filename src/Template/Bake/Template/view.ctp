@@ -45,7 +45,7 @@ $pk = "\$$singularVar->{$primaryKey[0]}";
             <li><%= $pluralHumanName %></li></li>
         </ol>
         <small><?php echo ' #' . $<%= $singularVar %>->id; ?></small>
-        <div class="pull-right"><?= $this->Html->link(__('Listagem'), ['action' => 'index'], ['class' => 'btn btn-success btn-sm btn-flat']) ?></div>
+        <div class="pull-right"><?= $this->Html->link(__('Listagem'), ['action' => 'index'], ['class' => 'btn btn-default btn-sm btn-flat']) ?></div>
     </h1>
 </section>
 

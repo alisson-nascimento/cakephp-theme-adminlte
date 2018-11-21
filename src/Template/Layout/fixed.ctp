@@ -17,7 +17,7 @@
     <?php echo $this->fetch('css'); ?>
     
     <!-- Theme style -->
-    <?php echo $this->Html->css('AdminLTE.AdminLTE.min'); ?>
+    <?php echo $this->Html->css('AdminLTE.AdminLTE'); ?>
 <!-- AdminLTE Skins. Choose a skin from the css/skins
     folder instead of downloading all of them to reduce the load. -->
     <?php echo $this->Html->css('AdminLTE.skins/skin-'. Configure::read('Theme.skin') .'.min'); ?>
@@ -64,7 +64,7 @@
         </div>
         <!-- /.content-wrapper -->
 
-        <?php echo $this->element('footer'); ?>''
+        <?php echo $this->element('footer'); ?>
 
         <!-- Control Sidebar -->
         <?php echo $this->element('aside-control-sidebar'); ?>

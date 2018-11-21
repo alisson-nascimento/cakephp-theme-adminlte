@@ -10,7 +10,7 @@ use Cake\Utility\Inflector;
         <li><%= $pluralHumanName %></li>
     </ol>
     <small><?= __('<%= $action=="add"?"Adicionar":"Editar"; %>') ?></small>
-    <div class="pull-right"><?= $this->Html->link(__('Listagem'), ['action' => 'index'], ['class'=>'btn btn-success btn-sm btn-flat']) ?></div>
+    <div class="pull-right"><?= $this->Html->link(__('Listagem'), ['action' => 'index'], ['class'=>'btn btn-default btn-sm btn-flat']) ?></div>
   </h1>
   
 </section>
