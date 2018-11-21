@@ -43,7 +43,7 @@ $fields = collection($fields)
             <thead>
               <tr>
 <%  foreach ($fields as $field):
-if (!in_array($field, ['modified', 'updated', 'deleted'])) :%>
+if (!in_array($field, ['modified', 'updated', 'deleted', 'id'])) :%>
                 <th><?= $this->Paginator->sort('<%= $field %>') ?></th>
 <%  endif; %>
 <%  endforeach; %>
@@ -54,7 +54,7 @@ if (!in_array($field, ['modified', 'updated', 'deleted'])) :%>
             <?php foreach ($<%= $pluralVar %> as $<%= $singularVar %>): ?>
               <tr>
 <%  foreach ($fields as $field) {
-    if (!in_array($field, ['modified', 'updated', 'deleted'])) {
+    if (!in_array($field, ['modified', 'updated', 'deleted', 'id'])) {
     $isKey = false;
     if (!empty($associations['BelongsTo'])) {
     foreach ($associations['BelongsTo'] as $alias => $details) {
@@ -95,9 +95,14 @@ if (!in_array($field, ['modified', 'updated', 'deleted'])) :%>
         </div>
         <!-- /.box-body -->
         <div class="box-footer clearfix">
-          <ul class="pagination pagination-sm no-margin pull-right">
-            <?php echo $this->Paginator->numbers(); ?>
-          </ul>
+            <div class='pull-left'>
+             <?php  echo $this->Paginator->counter(
+                    '{{start}} - ending on {{end}} de {{count}}'
+                    );?>
+            </div>  
+            <ul class="pagination pagination-sm no-margin pull-right">
+              <?php echo $this->Paginator->numbers(); ?>
+            </ul>
         </div>
       </div>
       <!-- /.box -->
