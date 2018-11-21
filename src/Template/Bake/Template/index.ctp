@@ -23,21 +23,44 @@ $fields = collection($fields)
 <section class="content">
   <div class="row">
     <div class="col-xs-12">
+      
+      <!-- Perquisar -->
+      <div class="panel panel-default">
+        <div class="panel-heading">
+          <h4 class="panel-title">
+            <a data-toggle="collapse" href="#collapse1" aria-expanded="true">
+                <b>Pesquisar</b>
+            </a>
+            <div class="pull-right">
+                <?= $this->Form->button(__('Filtrar'),[ 'class'=>'btn btn-default btn-xs btn-flat']) ?>
+                <!-- Split button -->
+                <div class="btn-group">
+                    <button type="button" class="btn btn-default btn-flat btn-xs">Exportar</button>
+                    <button type="button" class="btn btn-default dbtn-flat btn-xs ropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                      <span class="caret"></span>
+                    </button>
+                    <ul class="dropdown-menu">
+                      <li><a href="#">PDF</a></li>
+                      <li><a href="#">Planilha</a></li>                                            
+                    </ul>
+                </div>
+            </div>  
+          </h4>
+        </div>
+        <div id="collapse1" class="panel-collapse collapse in">
+            <div class="panel-body">
+                <?= $this->Form->create(null, array('role' => 'form')) ?>
+                    
+                    <?php
+                      echo $this->Form->input('descricao');
+                    ?>
+                                        
+                  <?= $this->Form->end() ?>
+            </div>      
+        </div>
+      </div>  
+        
       <div class="box">
-<!--        <div class="box-header">
-          <h3 class="box-title"><?= __('Listagem de') ?> <%= $pluralHumanName %></h3>
-          <div class="box-tools">
-            <form action="<?php echo $this->Url->build(); ?>" method="POST">
-              <div class="input-group input-group-sm"  style="width: 180px;">
-                <input type="text" name="search" class="form-control" placeholder="<?= __('Pesquisar...') ?>">
-                <span class="input-group-btn">
-                <button class="btn btn-info btn-flat" type="submit"><?= __('Filtrar') ?></button>
-                </span>
-              </div>
-            </form>
-          </div>
-        </div>-->
-        <!-- /.box-header -->
         <div class="box-body table-responsive no-padding">
           <table class="table table-bordered"class="table table-hover">
             <thead>
@@ -97,11 +120,11 @@ if (!in_array($field, ['modified', 'updated', 'deleted', 'id'])) :%>
         <div class="box-footer clearfix">
             <div class='pull-left'>
              <?php  echo $this->Paginator->counter(
-                    '{{start}} - ending on {{end}} de {{count}}'
+                    '{{start}} - {{end}} de {{count}}'
                     );?>
             </div>  
             <ul class="pagination pagination-sm no-margin pull-right">
-              <?php echo $this->Paginator->numbers(); ?>
+              <?php echo $this->Paginator->numbers(['first' => __('Primeira'), 'last'=>__('Última')]); ?>
             </ul>
         </div>
       </div>

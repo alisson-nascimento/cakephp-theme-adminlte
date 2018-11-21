@@ -4979,3 +4979,8 @@ table.text-center th {
     white-space: normal !important;
   }
 }
+
+.table tr > td.actions{
+    width: 150px;
+    text-align: center;
+}
