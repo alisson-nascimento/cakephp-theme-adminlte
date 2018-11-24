@@ -2436,7 +2436,8 @@ a:focus {
  * ----------------
  */
 .alert {
-  border-radius: 3px;
+  border-radius: 0px;
+  margin: 10px;
 }
 .alert h4 {
   font-weight: 600;
@@ -4984,3 +4985,4 @@ table.text-center th {
     width: 150px;
     text-align: center;
 }
+
