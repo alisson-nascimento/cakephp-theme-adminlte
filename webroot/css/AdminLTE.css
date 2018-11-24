@@ -4986,3 +4986,6 @@ table.text-center th {
     text-align: center;
 }
 
+.panel{
+    margin-bottom:15px;
+}

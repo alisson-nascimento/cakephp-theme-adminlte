@@ -26,9 +26,9 @@
         $this->request->allowMethod(['post', 'delete']);
         $<%= $singularName %> = $this-><%= $currentModelName %>->get($id);
         if ($this-><%= $currentModelName; %>->delete($<%= $singularName %>)) {
-            $this->Flash->success(__('The {0} has been deleted.', '<%= $singularHumanName %>'));
+            $this->Flash->success(__('{0} deletado(a).', '<%= $singularHumanName %>'));
         } else {
-            $this->Flash->error(__('The {0} could not be deleted. Please, try again.', '<%= $singularHumanName %>'));
+            $this->Flash->error(__('{0} não pode ser deletado(a).', '<%= $singularHumanName %>'));
         }
         return $this->redirect(['action' => 'index']);
     }

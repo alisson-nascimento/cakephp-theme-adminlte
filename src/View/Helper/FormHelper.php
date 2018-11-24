@@ -65,7 +65,7 @@ class FormHelper extends CakeFormHelper {
 
     public function submit($caption = null, array $options = array())
     {
-        $options += ['class' => 'btn btn-success'];
+        $options += ['class' => 'btn btn-success btn-flat'];
         return parent::submit($caption, $options);
     }
 
