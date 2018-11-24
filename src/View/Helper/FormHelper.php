@@ -58,7 +58,7 @@ class FormHelper extends CakeFormHelper {
 
     public function button($title, array $options = array())
     {
-        $options += ['escape' => false, 'secure' => false, 'class' => 'btn btn-success'];
+        $options += ['escape' => false, 'secure' => false, 'class' => 'btn btn-success btn-flat'];
         $options['text'] = $title;
         return $this->widget('button', $options);
     }
