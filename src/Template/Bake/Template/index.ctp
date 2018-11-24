@@ -25,7 +25,7 @@ $fields = collection($fields)
     <div class="col-xs-12">
       
       <!-- Perquisar -->
-      <?php $this->element('Pesquisar/common'); ?>
+      <?php echo $this->element('AdminLTE.filter'); ?>
         
       <div class="box">
         <div class="box-body table-responsive no-padding">
