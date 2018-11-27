@@ -3,7 +3,7 @@ use Cake\Utility\Inflector;
 
 $fields = collection($fields)
   ->filter(function($field) use ($schema) {
-    return !in_array($schema->columnType($field), ['binary', 'text']);
+    return !in_array($schema->getColumnType($field), ['binary', 'text']);
   })
   ->take(7);
 %>
@@ -34,7 +34,7 @@ $fields = collection($fields)
               <tr>
 <%  foreach ($fields as $field):
 $fieldUcFirst = ucfirst($field);
-if (!in_array($field, ['modified', 'updated', 'deleted', 'id'])) :%>
+if (!in_array($field, ['created', 'modified', 'deleted', 'id'])) :%>
                 <th><?= $this->Paginator->sort('<%= $field %>', __('<%= $fieldUcFirst %>')) ?></th>
 <%  endif; %>
 <%  endforeach; %>
@@ -45,7 +45,7 @@ if (!in_array($field, ['modified', 'updated', 'deleted', 'id'])) :%>
             <?php foreach ($<%= $pluralVar %> as $<%= $singularVar %>): ?>
               <tr>
 <%  foreach ($fields as $field) {
-    if (!in_array($field, ['modified', 'updated', 'deleted', 'id'])) {
+    if (!in_array($field, ['modified', 'created', 'deleted', 'id'])) {
     $isKey = false;
     if (!empty($associations['BelongsTo'])) {
     foreach ($associations['BelongsTo'] as $alias => $details) {
@@ -60,7 +60,7 @@ if (!in_array($field, ['modified', 'updated', 'deleted', 'id'])) :%>
     }
 
     if ($isKey !== true) {
-      if (!in_array($schema->columnType($field), ['integer', 'biginteger', 'decimal', 'float'])) {
+      if (!in_array($schema->getColumnType($field), ['integer', 'biginteger', 'decimal', 'float'])) {
 %>
                 <td><?= h($<%= $singularVar %>-><%= $field %>) ?></td>
 <%

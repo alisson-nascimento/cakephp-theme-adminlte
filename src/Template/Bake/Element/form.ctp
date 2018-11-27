@@ -34,14 +34,13 @@ use Cake\Utility\Inflector;
       }
       if (isset($keyFields[$field])) {
         $fieldData = $schema->getColumn($field);
-        $fieldUcFirst = ucfirst($field);
         if (!empty($fieldData['null'])) {
 %>
-            echo $this->Form->input('<%= $field %>', ['label'=>__('<%= $fieldUcFirst %>'),'options' => $<%= $keyFields[$field] %>, 'empty' => true]);
+            echo $this->Form->input('<%= $field %>', ['label'=>__('<%= ucfirst($field) %>'),'options' => $<%= $keyFields[$field] %>, 'empty' => true]);
 <%
         } else {
 %>
-            echo $this->Form->input('<%= $field %>', ['label'=>__('<%= $fieldUcFirst %>'),'options' => $<%= $keyFields[$field] %>]);
+            echo $this->Form->input('<%= $field %>', ['label'=>__('<%= ucfirst($field) %>'),'options' => $<%= $keyFields[$field] %>]);
 <%
         }
         continue;
@@ -51,11 +50,11 @@ use Cake\Utility\Inflector;
         if (($fieldData['type'] === 'date')) {
             $extras[] = 'datepicker';
 %>
-            echo $this->Form->input('<%= $field %>', ['label'=>__('<%= $fieldUcFirst %>'),'empty' => true, 'default' => '', 'class' => 'datepicker form-control', 'type' => 'text']);
+            echo $this->Form->input('<%= $field %>', ['label'=>__('<%= ucfirst($field) %>'),'empty' => true, 'default' => '', 'class' => 'datepicker form-control', 'type' => 'text']);
 <%
         } else {
 %>
-            echo $this->Form->input('<%= $field %>', ['label'=>__('<%= $fieldUcFirst %>')]);
+            echo $this->Form->input('<%= $field %>', ['label'=>__('<%= ucfirst($field) %>')]);
 <%
         }
       }
@@ -63,7 +62,7 @@ use Cake\Utility\Inflector;
     if (!empty($associations['BelongsToMany'])) {
       foreach ($associations['BelongsToMany'] as $assocName => $assocData) {
 %>
-            echo $this->Form->input('<%= $assocData['property'] %>._ids', ['label'=>__('<%= $fieldUcFirst %>'), 'options' => $<%= $assocData['variable'] %>]);
+            echo $this->Form->input('<%= $assocData['property'] %>._ids', ['label'=>__('<%= ucfirst($field) %>'), 'options' => $<%= $assocData['variable'] %>]);
 <%
       }
     }
