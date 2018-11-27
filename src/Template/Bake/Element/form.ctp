@@ -33,7 +33,7 @@ use Cake\Utility\Inflector;
         continue;
       }
       if (isset($keyFields[$field])) {
-        $fieldData = $schema->column($field);
+        $fieldData = $schema->getColumn($field);
         if (!empty($fieldData['null'])) {
 %>
             echo $this->Form->input('<%= $field %>', ['options' => $<%= $keyFields[$field] %>, 'empty' => true]);
@@ -46,7 +46,7 @@ use Cake\Utility\Inflector;
         continue;
       }
       if (!in_array($field, ['created', 'modified', 'updated'])) {
-        $fieldData = $schema->column($field);
+        $fieldData = $schema->getColumn($field);
         if (($fieldData['type'] === 'date')) {
             $extras[] = 'datepicker';
 %>
