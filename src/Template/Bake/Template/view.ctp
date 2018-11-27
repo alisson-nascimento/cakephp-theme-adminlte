@@ -61,16 +61,16 @@ $pk = "\$$singularVar->{$primaryKey[0]}";
                             <% if (isset($associationFields[$field])) :
                                 $details = $associationFields[$field];
                                 %>
-                                <dt><?= __('<%= Inflector::humanize($details['property']) %>') ?></dt>
-                                <dd>
-                                    <?= $<%= $singularVar %>->has('<%= $details['property'] %>') ? $<%= $singularVar %>-><%= $details['property'] %>-><%= $details['displayField'] %> : '' ?>
-                                </dd>
+                        <dt><?= __('<%= Inflector::humanize($details['property']) %>') ?></dt>
+                        <dd>
+                            <?= $<%= $singularVar %>->has('<%= $details['property'] %>') ? $<%= $singularVar %>-><%= $details['property'] %>-><%= $details['displayField'] %> : '' ?>
+                        </dd>
                             <% else :
                                     if ($field != 'password') :%>
-                                        <dt><?= __('<%= Inflector::humanize($field) %>') ?></dt>
-                                        <dd>
-                                            <?= h($<%= $singularVar %>-><%= $field %>) ?>
-                                        </dd>
+                        <dt><?= __('<%= Inflector::humanize($field) %>') ?></dt>
+                        <dd>
+                            <?= h($<%= $singularVar %>-><%= $field %>) ?>
+                        </dd>
                                     <% endif; %>
                             <% endif; %>
                         <% endforeach; %>
@@ -78,48 +78,48 @@ $pk = "\$$singularVar->{$primaryKey[0]}";
                         
                     <% if ($associations['HasOne']) : %>
                         <% foreach ($associations['HasOne'] as $alias => $details) : %>
-                            <dt><?= __('<%= Inflector::humanize(Inflector::singularize(Inflector::underscore($alias))) %>') ?></dt>
-                            <dd>
-                                <?= $<%= $singularVar %>->has('<%= $details['property'] %>') ? $this->Html->link($<%= $singularVar %>-><%= $details['property'] %>-><%= $details['displayField'] %>, ['controller' => '<%= $details['controller'] %>', 'action' => 'view', $<%= $singularVar %>-><%= $details['property'] %>-><%= $details['primaryKey'][0] %>]) : '' ?>
-                            </dd>
+                        <dt><?= __('<%= Inflector::humanize(Inflector::singularize(Inflector::underscore($alias))) %>') ?></dt>
+                        <dd>
+                            <?= $<%= $singularVar %>->has('<%= $details['property'] %>') ? $this->Html->link($<%= $singularVar %>-><%= $details['property'] %>-><%= $details['displayField'] %>, ['controller' => '<%= $details['controller'] %>', 'action' => 'view', $<%= $singularVar %>-><%= $details['property'] %>-><%= $details['primaryKey'][0] %>]) : '' ?>
+                        </dd>
                         <% endforeach; %>
                     <% endif; %>
                         
                     <% if ($groupedFields['number']) : %>
                         <% foreach ($groupedFields['number'] as $field) : %>
                             <% if ($field != $primaryKey[0]) :%>
-                                <dt><?= __('<%= Inflector::humanize($field) %>') ?></dt>
-                                <dd>
-                                    <?= $this->Number->format($<%= $singularVar %>-><%= $field %>) ?>
-                                </dd>
+                        <dt><?= __('<%= Inflector::humanize($field) %>') ?></dt>
+                        <dd>
+                            <?= $this->Number->format($<%= $singularVar %>-><%= $field %>) ?>
+                        </dd>
                             <% endif; %>
                         <% endforeach; %>
                     <% endif; %>
                         
                     <% if ($groupedFields['date']) : %>
                         <% foreach ($groupedFields['date'] as $field) : %>
-                            <% if (!in_array($field, ['created', 'modified', 'updated'])) : %>
-                                <dt><%= "<%= __('" . Inflector::humanize($field) . "') %>" %></dt>
-                                <dd>
-                                    <?= h($<%= $singularVar %>-><%= $field %>) ?>
-                                </dd>
+                            <% if (!in_array($field, ['updated'])) : %>
+                        <dt><%= "<%= __('" . Inflector::humanize($field) . "') %>" %></dt>
+                        <dd>
+                            <?= h($<%= $singularVar %>-><%= $field %>) ?>
+                        </dd>
                                 <% endif; %>
                         <% endforeach; %>
                     <% endif; %>
                         
                     <% if ($groupedFields['boolean']) : %>
                         <% foreach ($groupedFields['boolean'] as $field) : %>
-                            <dt><?= __('<%= Inflector::humanize($field) %>') ?></dt>
-                            <dd>
-                            <?= $<%= $singularVar %>-><%= $field %> ? __('Yes') : __('No'); ?>
-                            </dd>
+                        <dt><?= __('<%= Inflector::humanize($field) %>') ?></dt>
+                        <dd>
+                        <?= $<%= $singularVar %>-><%= $field %> ? __('Yes') : __('No'); ?>
+                        </dd>
                         <% endforeach; %>
                     <% endif; %>
                         
                     <% if ($groupedFields['text']) : %>
                         <% foreach ($groupedFields['text'] as $field) : %>
-                            <dt><?= __('<%= Inflector::humanize($field) %>') ?></dt>
-                            <dd><?= $this->Text->autoParagraph(h($<%= $singularVar %>-><%= $field %>)); ?></dd>
+                        <dt><?= __('<%= Inflector::humanize($field) %>') ?></dt>
+                        <dd><?= $this->Text->autoParagraph(h($<%= $singularVar %>-><%= $field %>)); ?></dd>
                         <% endforeach; %>
                     <% endif; %>
                 </dl>
@@ -154,29 +154,18 @@ foreach ($relations as $alias => $details):
                         <tbody>
                             <tr>
                                 <% foreach ($details['fields'] as $field): %>
-                                    <% if (in_array($field, ['created', 'modified'])) { continue; } %>
-
-                                    <th>
-                                    <%= Inflector::humanize($field) %>
-                                    </th>
-                                        
-                                <% endforeach; %>
-                                    
-                                <th>
-                                    &nbsp;
-                                </th>
+                                    <% if (in_array($field, ['created', 'modified', 'deleted'])) { continue; } %>
+                                <th><%= Inflector::humanize($field) %></th>                                        
+                                <% endforeach; %>                                    
+                                <th>&nbsp;</th>
                             </tr>
 
                             <?php foreach ($<%= $singularVar %>-><%= $details['property'] %> as $<%= $otherSingularVar %>): ?>
                                 <tr>
                                     <% foreach ($details['fields'] as $field): %>
-                                    <% if (in_array($field, ['created', 'modified'])) { continue; } %>
-
-                                    <td>
-                                    <?= h($<%= $otherSingularVar %>-><%= $field %>) ?>
-                                    </td>
+                                    <% if (in_array($field, ['created', 'modified',  'deleted'])) { continue; } %>
+                                    <td><?= h($<%= $otherSingularVar %>-><%= $field %>) ?></td>
                                     <% endforeach; %>
-
                                     <% $otherPk = "\${$otherSingularVar}->{$details['primaryKey'][0]}"; %>
                                     <td class="actions">
                                     <?= $this->Html->link(__('Ver'), ['controller' => '<%= $details['controller'] %>', 'action' => 'view', <%= $otherPk %>], ['class'=>'btn btn-info btn-xs']) %>
