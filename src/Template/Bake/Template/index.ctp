@@ -12,7 +12,7 @@ $fields = collection($fields)
   <h1>
     <ol class="breadcrumb">
         <li><i class="fa fa-dashboard"></i></li>
-        <li><%= $pluralHumanName %></li>
+        <li><?= __('<%= $pluralHumanName %>')?></li>
     </ol>
     <small>Listagem</small>
     <div class="pull-right"><?= $this->Html->link(__('Adicionar'), ['action' => 'add'], ['class'=>'btn btn-default btn-sm btn-flat']) ?></div>
