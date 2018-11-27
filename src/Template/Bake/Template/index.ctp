@@ -33,8 +33,9 @@ $fields = collection($fields)
             <thead>
               <tr>
 <%  foreach ($fields as $field):
+$fieldUcFirst = ucfirst($field);
 if (!in_array($field, ['modified', 'updated', 'deleted', 'id'])) :%>
-                <th><?= $this->Paginator->sort('<%= $field %>') ?></th>
+                <th><?= $this->Paginator->sort('<%= $field %>', __('<%= $fieldUcFirst %>')) ?></th>
 <%  endif; %>
 <%  endforeach; %>
                 <th>&nbsp;</th>

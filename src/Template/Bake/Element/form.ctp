@@ -34,27 +34,28 @@ use Cake\Utility\Inflector;
       }
       if (isset($keyFields[$field])) {
         $fieldData = $schema->getColumn($field);
+        $fieldUcFirst = ucfirst($field);
         if (!empty($fieldData['null'])) {
 %>
-            echo $this->Form->input('<%= $field %>', ['options' => $<%= $keyFields[$field] %>, 'empty' => true]);
+            echo $this->Form->input('<%= $field %>', ['label'=>__('<%= $fieldUcFirst %>'),'options' => $<%= $keyFields[$field] %>, 'empty' => true]);
 <%
         } else {
 %>
-            echo $this->Form->input('<%= $field %>', ['options' => $<%= $keyFields[$field] %>]);
+            echo $this->Form->input('<%= $field %>', ['label'=>__('<%= $fieldUcFirst %>'),'options' => $<%= $keyFields[$field] %>]);
 <%
         }
         continue;
       }
-      if (!in_array($field, ['created', 'modified', 'updated'])) {
+      if (!in_array($field, ['created', 'modified', 'updated', 'deleted'])) {
         $fieldData = $schema->getColumn($field);
         if (($fieldData['type'] === 'date')) {
             $extras[] = 'datepicker';
 %>
-            echo $this->Form->input('<%= $field %>', ['empty' => true, 'default' => '', 'class' => 'datepicker form-control', 'type' => 'text']);
+            echo $this->Form->input('<%= $field %>', ['label'=>__('<%= $fieldUcFirst %>'),'empty' => true, 'default' => '', 'class' => 'datepicker form-control', 'type' => 'text']);
 <%
         } else {
 %>
-            echo $this->Form->input('<%= $field %>');
+            echo $this->Form->input('<%= $field %>', ['label'=>__('<%= $fieldUcFirst %>')]);
 <%
         }
       }
@@ -62,7 +63,7 @@ use Cake\Utility\Inflector;
     if (!empty($associations['BelongsToMany'])) {
       foreach ($associations['BelongsToMany'] as $assocName => $assocData) {
 %>
-            echo $this->Form->input('<%= $assocData['property'] %>._ids', ['options' => $<%= $assocData['variable'] %>]);
+            echo $this->Form->input('<%= $assocData['property'] %>._ids', ['label'=>__('<%= $fieldUcFirst %>'), 'options' => $<%= $assocData['variable'] %>]);
 <%
       }
     }

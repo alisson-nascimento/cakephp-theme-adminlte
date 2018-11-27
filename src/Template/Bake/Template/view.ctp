@@ -54,11 +54,6 @@ $pk = "\$$singularVar->{$primaryKey[0]}";
 <div class="row">
     <div class="col-md-12">
         <div class="box box-solid">
-            <div class="box-header with-border">
-                <i class="fa fa-info"></i>
-                <h3 class="box-title"><?php echo __('Dados'); ?></h3>
-            </div>
-            <!-- /.box-header -->
             <div class="box-body">
                 <dl class="dl-horizontal">
                     <% if ($groupedFields['string']) : %>
