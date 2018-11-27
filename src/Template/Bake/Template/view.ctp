@@ -42,7 +42,7 @@ $pk = "\$$singularVar->{$primaryKey[0]}";
     <h1>
         <ol class="breadcrumb">
             <li><i class="fa fa-dashboard"></i></li>
-            <li>__('<%= $singularHumanName %>')</li>
+            <li><?= __('<%= $pluralHumanName %>') ?></li>
         </ol>
         <small><?php echo ' #' . $<%= $singularVar %>->id; ?></small>
         <div class="pull-right"><?= $this->Html->link(__('Listagem'), ['action' => 'index'], ['class' => 'btn btn-default btn-sm btn-flat']) ?></div>
