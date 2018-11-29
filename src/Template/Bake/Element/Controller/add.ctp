@@ -22,6 +22,7 @@ $compact = ["'" . $singularName . "'"];
      */
     public function add()
     {
+        $this->viewBuilder()->setTemplate('form');
         $<%= $singularName %> = $this-><%= $currentModelName %>->newEntity();
         if ($this->request->is('post')) {
             $<%= $singularName %> = $this-><%= $currentModelName %>->patchEntity($<%= $singularName %>, $this->request->data);

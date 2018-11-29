@@ -9,7 +9,7 @@ use Cake\Utility\Inflector;
         <li><i class="fa fa-dashboard"></i></li>
         <li><?= __('<%= $pluralHumanName %>')?></li>
     </ol>
-    <small><?= __('<%= $action=="add"?"Adicionar":"Editar"; %>') ?></small>
+    <small><?=($this->request->params['action'] == 'edit')? __('Editar'): __('Adicionar')?></small>
     <div class="pull-right"><?= $this->Html->link(__('Listagem'), ['action' => 'index'], ['class'=>'btn btn-default btn-sm btn-flat']) ?></div>
   </h1>
   

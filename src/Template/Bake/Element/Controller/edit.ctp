@@ -27,6 +27,7 @@ $compact = ["'" . $singularName . "'"];
      */
     public function edit($id = null)
     {
+        $this->viewBuilder()->setTemplate('form');
         $<%= $singularName %> = $this-><%= $currentModelName %>->get($id, [
             'contain' => [<%= $this->Bake->stringifyList($belongsToMany, ['indent' => false]) %>]
         ]);
