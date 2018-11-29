@@ -16,7 +16,7 @@ composer require alisson-nascimento/cakephp-theme-adminlte
 $ bin/cake plugin load AdminLTE
 ```
 
-### Hbilitar Theme
+### Habilitar Theme
 
 ```php
 // src/Controller/AppController.php
