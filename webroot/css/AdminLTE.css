@@ -1767,15 +1767,18 @@ a:focus {
 .box-header:before,
 .box-body:before,
 .box-footer:before,
+.tab-footer:before,
 .box-header:after,
 .box-body:after,
-.box-footer:after {
+.box-footer:after,
+.tab-footer:after{
   content: " ";
   display: table;
 }
 .box-header:after,
 .box-body:after,
-.box-footer:after {
+.box-footer:after,
+.tab-footer:after{
   clear: both;
 }
 .box-header {
@@ -1867,7 +1870,7 @@ a:focus {
   border-bottom-right-radius: 3px;
   border-bottom-left-radius: 0;
 }
-.box-footer {
+.box-footer, .tab-footer {
   border-top-left-radius: 0;
   border-top-right-radius: 0;
   border-bottom-right-radius: 3px;
