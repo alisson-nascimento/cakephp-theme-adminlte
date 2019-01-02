@@ -23,12 +23,18 @@
      */
     public function delete($id = null)
     {
-        $this->request->allowMethod(['post', 'delete']);
         $<%= $singularName %> = $this-><%= $currentModelName %>->get($id);
-        if ($this-><%= $currentModelName; %>->delete($<%= $singularName %>)) {
-            $this->Flash->success(__('{0} deletado(a).', '<%= $singularHumanName %>'));
-        } else {
-            $this->Flash->error(__('{0} não pode ser deletado(a).', '<%= $singularHumanName %>'));
+
+        if ($this->request->is(['post', 'put', 'delete'])) {
+            if ($this-><%= $currentModelName; %>->delete($<%= $singularName %>)) {
+                $this->Flash->success(__('{0} deletado(a).', '<%= $singularHumanName %>'));
+            } else {
+                $this->Flash->error(__('{0} não pode ser deletado(a).', '<%= $singularHumanName %>'));
+            }
+            return $this->redirect(['action' => 'index']);
+        }else{
+            $this->set(compact('<%= $singularName %>'));
+            $this->set('_serialize', ['<%= $singularName %>']);
         }
-        return $this->redirect(['action' => 'index']);
+        
     }

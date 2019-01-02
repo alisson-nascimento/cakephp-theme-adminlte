@@ -77,7 +77,7 @@ if (!in_array($field, ['created', 'modified', 'deleted', 'id'])) :%>
                 <td class="actions" style="white-space:nowrap">
                   <!--<?= $this->Html->link(__('Ver'), ['action' => 'view', <%= $pk %>], ['class'=>'btn btn-default btn-xs btn-flat']) ?>-->
                   <?= $this->Html->link(__('Editar'), ['action' => 'edit', <%= $pk %>], ['class'=>'btn btn-default btn-xs btn-flat']) ?>
-                  <?= $this->Form->postLink(__('Deletar'), ['action' => 'delete', <%= $pk %>], ['confirm' => __('Confirm to delete this entry?'), 'class'=>'btn btn-danger btn-xs btn-flat']) ?>
+                  <?= $this->Html->link(__('Deletar'), ['action' => 'delete', <%= $pk %>], ['class'=>'btn btn-danger btn-xs btn-flat modal-delete']) ?>
                 </td>
               </tr>
             <?php endforeach; ?>
@@ -101,3 +101,6 @@ if (!in_array($field, ['created', 'modified', 'deleted', 'id'])) :%>
   </div>
 </section>
 <!-- /.content -->
+<?php
+  $this->Html->script('_modal',  ['block' => true]);
+?>
