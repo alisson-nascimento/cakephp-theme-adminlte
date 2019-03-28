@@ -91,7 +91,7 @@ class FormHelper extends CakeFormHelper {
 
         $options += $_options;
 
-        return parent::input($fieldName, $options);
+        return parent::control($fieldName, $options);
     }
 	public function control($fieldName, array $options = [])
 	{
